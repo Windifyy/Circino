@@ -1,0 +1,17 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class RotateTowardsZ : MonoBehaviour
+{
+    [SerializeField] Vector3 target = new Vector3(0, 0, int.MaxValue);
+    Quaternion dir;
+    void Update()
+   {
+       dir = transform.localRotation;
+       transform.LookAt(target);
+       dir.w = -transform.localRotation.w;
+       dir.y = transform.localRotation.y;
+       transform.localRotation = dir;
+   }
+}
